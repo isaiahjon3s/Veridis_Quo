@@ -12,5 +12,20 @@
     <div class="container">
         <h1>This is Veridis Quo</h1>
     </div>
+    <audio id="backgroundAudio" loop>
+        <source src="{{ url_for('static', filename='audio/background.mp3') }}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('backgroundAudio');
+            // Try to play audio when user interacts with the page
+            document.body.addEventListener('click', function() {
+                audio.play().catch(function(error) {
+                    console.log("Audio playback failed:", error);
+                });
+            }, { once: true });
+        });
+    </script>
 </body>
 </html> 
